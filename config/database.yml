@@ -22,8 +22,11 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
-  <<: *default
-  database: MyApp_development
+  adapter: postgresql
+  encoding: unicode
+  database: cloud_db
+  username: oblakouser
+  password: 1234532145
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
