@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+  <body>
+    <div class="header">
+      <h1 class="title"> Задачи </h1>
+      <a class="add_new_todo" id="add_todo_link" href="#">
+        <%= image_tag("add.png", size: "50x50", id: "add_icon")%>
+      </a>
+    </div>
+
+    <div class="todo_body">
+
+    </div>
+      <% @project.each do |project| %>
+        <h3><%= project.title.upcase %></h3>
+        <ul>
+          <% project.todos.each do |todo| %>
+            <li> <%= todo.text %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+
+
+    <div class="add_todo_div" id="add_todo_div" >
+      <h3>НОВАЯ ЗАДАЧА</h3>
+      <%= form_with model: @current_project, id: "add_todo_form",local: true do |form| %>
+        <%= form.text_field :text, placeholder:  "Название задачи..."%><br>
+        <%= form.select :title, options_for_select(@project.collect { |p| p.title}, :selected => params[:option]) %>
+        <p>
+          <%= link_to "ОТМЕНА", "#", id: "cancel_link"%>
+          <%= link_to "OK", "#", id: "create_link"%>
+        </p>
+      <% end %>
+    </div>
+
+      <%=javascript_include_tag "application.js" %>
+  </body>
+
+</html>
