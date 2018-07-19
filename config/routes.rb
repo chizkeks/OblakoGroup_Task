@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   #
   resources :projects, shallow: true
   root to: 'projects#index'
+  post 'update_todo', to: 'projects#update'
   #post 'projects', to: 'projects#create'
 end

@@ -1,0 +1,254 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import 'icheck/square/blue';
+@import "bootstrap";
+
+@import 'select2';
+@import 'select2-bootstrap';
+
+
+//Настройка шрифтов
+@font-face {
+  font-family: 'OpenSans-Light';
+  src: font-url('OpenSans-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'OpenSans-Regular';
+  src: font-url('OpenSans-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'OpenSans-Semibold';
+  src: font-url('OpenSans-Semibold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+//Настройка хедера страницы (заголовка задачи + ссылки для добавления
+.header-div {
+    background-color: deepskyblue;
+    color: white;
+    text-align:center;
+    height: 100px;
+    width: 100%;
+}
+.header-div h1 {
+    vertical-align:middle;
+    margin:auto;
+    display: inline-block;
+    line-height: 100px;
+    width: 80%;
+    font-family: OpenSans-Semibold, serif;
+}
+.header-div a{
+    vertical-align:middle;
+    margin:auto;
+    line-height: 100px;
+    font-size: 35px;
+    color: white;
+    text-decoration: none;
+    font-family: OpenSans-Semibold, serif;
+}
+//
+
+
+
+
+// Установка тени
+.project-body, .header-div {
+    -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+}
+//
+
+
+
+
+//Установка границ "проекта" и отступов
+.todo-body {
+  border-top: #CCCCCC solid 1px;
+  width: 100%;
+}
+.icheckbox_square-blue {
+    margin: 15px;
+}
+.input-todo-label{
+  margin: 0;
+  font-family: OpenSans-Light, serif;
+}
+.input-project-label{
+  font-family: OpenSans-Regular, serif;
+}
+.container {
+  width: 100%;
+  max-width: 100%;
+}
+//
+
+
+
+
+
+// Общие настройки для страницы
+.project-body{
+  border-style: solid;
+  border-width: 1px 1px 1px 1px;
+  border-color: #CCCCCC;
+  margin-bottom: 20px;
+  font-size: 13px;
+}
+.project-body .input-project-label {
+  vertical-align:middle;
+  line-height: 20px;
+  margin: 15px;
+  font-size: 13px;
+}
+//
+
+
+
+.row {
+  margin-top: 25px;
+  width: 90%;
+  margin-left: 30px;
+  margin-right: 10px;
+}
+//
+
+
+
+//Настройка "всплывания" формы поверх страницы и затенения фона
+.body-div{
+  position: relative;
+}
+.form-body{
+  position: absolute;
+  top: 0; left:0;
+  width: 100%;
+  height: 100%;
+}
+.form-background{
+  position: absolute;
+  top: 0; left:0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: #2E2F30;
+  opacity: 0.8;
+}
+.add-todo-div{
+  //Position
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  background-color: white;
+
+  //Size
+  width: 45%;
+  height: 38%;
+  z-index: 100;
+
+  //Text position
+  text-align:center;
+}
+//
+
+
+
+
+
+//Настройка формы
+.add-todo-div h3{
+  vertical-align:middle;
+  margin:auto;
+  display: inline-block;
+  line-height: 50px;
+  width: 80%;
+  font-size: 15px;
+  font-family: OpenSans-Semibold, serif;
+}
+#text{
+  height: 40px;
+  width: 90%;
+  margin-bottom: 5%;
+  font-family: OpenSans-Regular, serif;
+}
+#add-todo-form span.select2 {
+  max-width: 90%;
+  width: 90%;
+  //height: 40px;
+  margin-left: 5%;
+}
+.div-link-1, .div-link-2{
+  display:inline-block;
+  height: 50px;
+  margin: 20px 0;
+  width: 45%;
+  background-color: #666666;
+  justify-content: center;
+  text-align: center;
+}
+#cancel-link, #create-link {
+  display: inline-block;
+  text-decoration: none;
+  font-family: OpenSans-Semibold, serif;
+  font-size: 15px;
+  color: white;
+  vertical-align: middle;
+  margin:auto;
+  padding-top: 12px;
+}
+.div-link-1:hover, .div-link-2:hover{
+  background-color: deepskyblue;
+  color: white;
+}
+.form-links{
+  height: 75px;
+  margin: 0;
+}
+//
+
+
+
+
+
+// Настройка выпадающего меню
+.select2-selection, .select2-selection__rendered, .select2-selection__arrow {
+  height: 40px !important;
+  span {
+    line-height: 40px !important;
+    text-align: left;
+  }
+}
+.select2-selection {
+  border-radius: 0 !important;
+}
+.no-search .select2--search {
+  display:none
+}
+span.select2-selection.select2-selection--single{
+  padding: 0;
+  text-align: center;
+  font-size: 15px;
+  padding-left: 10px;
+}
+//

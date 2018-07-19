@@ -2,40 +2,51 @@
 <html>
 
   <body>
-    <div class="header">
-      <h1 class="title"> Задачи </h1>
-      <a class="add_new_todo" id="add_todo_link" href="#">
-        <%= image_tag("add.png", size: "50x50", id: "add_icon")%>
-      </a>
-    </div>
+    <div class="body-div">
+      <div class="header-div">
+        <h1 class="title-name"> Задачи </h1>
+        <a class="add-new-todo" id="add-todo-link" href="#">+</a>
+      </div>
 
-    <div class="todo_body">
-
-    </div>
-      <% @project.each do |project| %>
-        <h3><%= project.title.upcase %></h3>
-        <ul>
-          <% project.todos.each do |todo| %>
-            <li> <%= todo.text %></li>
+      <div class="container">
+        <div class="row">
+          <% @project.each do |project| %>
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+              <div class="project-body">
+                <%= form_with model: @current_project, :html => {id: "update-todo-form"}, :url => update_todo_url, remote: true do |form| %>
+                  <%= form.label :project_name, project.title.upcase, :class => "input-project-label" %><br>
+                  <div class="todo-body">
+                    <% project.todos.each do |todo| %>
+                      <%= form.check_box :todo_checkbox, {:class => "icheck-me", "data-skin" => "square", "data-color" => "blue"} %>
+                      <%= form.label :todo_name, todo.text, :class => "input-todo-label" %><br>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
           <% end %>
-        </ul>
-      <% end %>
+        </div>
+      </div>
+
+      <div class="form-body" style="visibility: hidden;">
+        <div class="form-background"></div>
+        <div class="add-todo-div" id="add-todo-div">
+          <h3>НОВАЯ ЗАДАЧА</h3>
+          <%= form_with model: @current_project, id: "add-todo-form",local: true do |form| %>
+            <%= form.text_field :text, placeholder:  "Название задачи..."%><br>
+            <%= form.select :title, @project.collect { |p| p.title}%>
+            <div class="div-link-1">
+              <%= link_to "ОТМЕНА", "#", id: "cancel-link"%>
+            </div>
+            <div class="div-link-2">
+              <%= link_to "OK", "#", id: "create-link"%>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
 
-
-    <div class="add_todo_div" id="add_todo_div" >
-      <h3>НОВАЯ ЗАДАЧА</h3>
-      <%= form_with model: @current_project, id: "add_todo_form",local: true do |form| %>
-        <%= form.text_field :text, placeholder:  "Название задачи..."%><br>
-        <%= form.select :title, options_for_select(@project.collect { |p| p.title}, :selected => params[:option]) %>
-        <p>
-          <%= link_to "ОТМЕНА", "#", id: "cancel_link"%>
-          <%= link_to "OK", "#", id: "create_link"%>
-        </p>
-      <% end %>
-    </div>
-
-      <%=javascript_include_tag "application.js" %>
+    <%=javascript_include_tag "application.js" %>
   </body>
 
 </html>

@@ -12,7 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require rails-ujs
+//= require select2-full
+// require rails-ujs
 //= require activestorage
 // require turbolinks
 //= require_tree .
@@ -22,26 +23,42 @@
     //$(document).foundation();
 //});
 
-
 $(document).ready(function() {
 
-    //$(document).on( function() {
-        //$('#create_link').click(function() {
-            //$("#add_todo_div").hide();
-            //return false;
-        //});
-    //});
-
-    $("#cancel_link").on("click", function () {
-        $("#add_todo_div").hide();
+    $('input').iCheck({
+        checkboxClass: 'icheckbox_square-blue',
+        increaseArea: '20%', // optional
     });
 
-    $("#add_todo_link").on("click", function () {
-        $("#add_todo_div").show();
+    $('.icheck-me').on('ifChanged', function() {
+        $('.icheckbox_square-blue.hover + .input-todo-label').css('text-decoration', 'line-through');
+        $('.icheckbox_square-blue.hover.checked + .input-todo-label').css('text-decoration', 'none');
+    });
+
+    $('.icheck-me').on('ifClicked', function() {
+        $('#update-todo-form').submit();
+    });
+
+    $("#cancel-link").on("click", function () {
+        $(".form-body").css('visibility', 'hidden');
+    });
+
+    $("#add-todo-link").on("click", function () {
+        $(".form-body").css('visibility', 'visible');
     });
 
 
-    $("#create_link").on("click", function () {
-        $("#add_todo_form").submit();
+    $("#create-link").on("click", function () {
+        $("#add-todo-form").submit();
+    });
+
+
+    $("#title").select2({
+        theme: "bootstrap",
+        minimumResultsForSearch: -1,
+        placeholder: "Категория",
+        allowClose: true,
+        width: 500,
+        height: 40
     });
 });
