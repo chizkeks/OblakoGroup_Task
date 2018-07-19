@@ -70,7 +70,9 @@
 //
 
 
-
+body {
+  height: 900px;
+}
 
 // Установка тени
 .project-body, .header-div {
@@ -139,6 +141,7 @@
 //Настройка "всплывания" формы поверх страницы и затенения фона
 .body-div{
   position: relative;
+  height: 100%;
 }
 .form-body{
   position: absolute;
@@ -164,7 +167,7 @@
 
   //Size
   width: 45%;
-  height: 38%;
+  height: 30%;
   z-index: 100;
 
   //Text position
@@ -197,6 +200,9 @@
   width: 90%;
   //height: 40px;
   margin-left: 5%;
+}
+#add-todo-form{
+  height: 80%;
 }
 .div-link-1, .div-link-2{
   display:inline-block;
