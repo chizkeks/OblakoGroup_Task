@@ -52,13 +52,14 @@ $(document).ready(function() {
         $("#add-todo-form").submit();
     });
 
-
-    $("#title").select2({
+    $("select").select2({
         theme: "bootstrap",
-        minimumResultsForSearch: -1,
         placeholder: "Категория",
-        allowClose: true,
-        width: 500,
-        height: 40
+        dropdownCssClass : 'no-search',
+        width: 2000,
+        height: 40,
+        minimumResultsForSearch: Infinity
+
     });
+
 });

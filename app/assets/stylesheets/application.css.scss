@@ -12,13 +12,13 @@
  *
  *= require_tree .
  *= require_self
+ *= require select2
+ *= require select2-bootstrap
  */
 
 @import 'icheck/square/blue';
 @import "bootstrap";
 
-@import 'select2';
-@import 'select2-bootstrap';
 
 
 //Настройка шрифтов

@@ -34,7 +34,7 @@
           <h3>НОВАЯ ЗАДАЧА</h3>
           <%= form_with model: @current_project, id: "add-todo-form",local: true do |form| %>
             <%= form.text_field :text, placeholder:  "Название задачи..."%><br>
-            <%= form.select :title, @project.collect { |p| p.title}%>
+            <%= form.select :title, @project.collect { |p| p.title}, :include_blank => true%>
             <div class="div-link-1">
               <%= link_to "ОТМЕНА", "#", id: "cancel-link"%>
             </div>
